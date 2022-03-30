@@ -3,15 +3,14 @@ import React from "react";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
 
 import Ionicons from "react-native-vector-icons/Ionicons"
 
 
+
 //Screens
-import Home from "./Screens/Home";
-import Profile from "./Screens/Profile";
-import SignUp from "./Pages/SignUp";
+import Home from "../Screens/Home";
+import Profile from "../Screens/Profile";
 
 
 //Screens Name
@@ -20,15 +19,12 @@ const profileName = "Profile";
 
 const fullScreenWidth = Dimensions.get("window").width;
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const App = (props) => {
+const Navigation = () => {
   return (
     <NavigationContainer>
-
       <Tab.Navigator initialRouteName={homeName} screenOptions={({route}) => ({
-         headerShown: false,
         tabBarIcon: ({ focused, color, size}) => {
           let iconName;
           let routeName = route.name;
@@ -50,8 +46,8 @@ const App = (props) => {
         labelStyle: {fontSize: 16},
         style: {width: fullScreenWidth}
     }}>
-     <Stack.Screen name="SignUp" component={SignUp} />
- 
+
+
         <Tab.Screen name={homeName} component={Home} />
         <Tab.Screen name={profileName} component={Profile} />
 
@@ -60,6 +56,6 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default Navigation;
 
 const styles = StyleSheet.create({});
